@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'store',
     'registration',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -65,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -116,3 +119,12 @@ EMAIL_HOST_PASSWORD = "turbine_1"
 EMAIl_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "books@jaggadu.com"
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+)
+
+# Social Auth - Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '127921377768515'
+SOCIAL_AUTH_FACEBOOK_SECRET = '4b16a1c7a65679a3e3879d70b3a05454'
